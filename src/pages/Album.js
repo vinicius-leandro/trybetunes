@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
 import Loading from '../components/Loading';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   constructor() {
@@ -28,25 +28,28 @@ class Album extends React.Component {
   getFavorite = async () => {
     const result = await getFavoriteSongs();
     const favorites = result.map((music) => music.trackId);
-    // this.setState((prevState) => (
-    //   { favoritesMusics: [...prevState.favoritesMusics, ...favorites] }
-    // ));
     this.setState({
       favoritesMusics: favorites,
     });
   }
 
-  addFavorite = async (track) => {
+  handleFavorites = async (track, toggleFavorite) => {
     this.setState({
       successfulFetch: false,
       loading: true,
     });
-    await addSong(track);
+    if (toggleFavorite === 'addSong') await addSong(track);
+    else await removeSong(track);
     await this.getFavorite();
     this.setState({
       successfulFetch: true,
       loading: false,
     });
+  }
+
+  toggleFavorite = (track, checkedValue) => {
+    if (checkedValue) this.handleFavorites(track, 'removeSong');
+    else this.handleFavorites(track, 'addSong');
   }
 
   fetchMusics = async () => {
@@ -97,7 +100,7 @@ class Album extends React.Component {
                         previewUrl={ track.previewUrl }
                         trackId={ track.trackId }
                         musicData={ track }
-                        addFavorite={ this.addFavorite }
+                        addFavorite={ this.toggleFavorite }
                         checkedValue={ isChecked }
                       />
                     );

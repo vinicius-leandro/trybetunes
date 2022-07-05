@@ -24,7 +24,7 @@ class MusicCard extends React.Component {
             id="favorites"
             name="favorites"
             checked={ checkedValue }
-            onChange={ () => addFavorite(musicData) }
+            onChange={ () => addFavorite(musicData, checkedValue) }
 
           />
         </label>
