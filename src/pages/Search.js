@@ -1,14 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import AlbumList from '../components/AlbumList';
+import Loading from '../components/Loading';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 class Search extends React.Component {
   constructor() {
     super();
     this.state = {
       artistName: '',
+      artistData: [],
+      artistSearched: '',
       disabled: true,
+      loading: false,
+      successfulFetch: false,
     };
+  }
+
+  handleClickButton = async (event) => {
+    event.preventDefault();
+    const { artistName } = this.state;
+    this.setState({ artistName: '', loading: true });
+    const results = await searchAlbumsAPI(artistName);
+    this.setState({
+      successfulFetch: true,
+      artistSearched: artistName,
+      loading: false,
+      artistData: results,
+    });
   }
 
   handleEnableButton = () => {
@@ -34,7 +54,8 @@ class Search extends React.Component {
 
   render() {
     const { history } = this.props;
-    const { artistName, disabled } = this.state;
+    const { artistName, disabled, loading,
+      successfulFetch, artistData, artistSearched } = this.state;
     return (
       <div data-testid="page-search">
         <Header history={ history } />
@@ -54,9 +75,16 @@ class Search extends React.Component {
               data-testid="search-artist-button"
               value="Pesquisar"
               disabled={ disabled }
+              onClick={ this.handleClickButton }
             />
           </form>
         </section>
+        {loading && <Loading />}
+        {
+          successfulFetch && (
+            <AlbumList data={ artistData } artist={ artistSearched } />
+          )
+        }
       </div>
     );
   }
