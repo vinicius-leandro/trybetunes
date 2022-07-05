@@ -100,7 +100,7 @@ class Album extends React.Component {
                         previewUrl={ track.previewUrl }
                         trackId={ track.trackId }
                         musicData={ track }
-                        addFavorite={ this.toggleFavorite }
+                        handleFavorite={ this.toggleFavorite }
                         checkedValue={ isChecked }
                       />
                     );
