@@ -1,13 +1,164 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import Loading from '../components/Loading';
+import { getUser, updateUser } from '../services/userAPI';
 
 class ProfileEdit extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      image: '',
+      name: '',
+      email: '',
+      description: '',
+      isDisable: true,
+      loading: true,
+      successfulFetch: false,
+    };
+  }
+
+  componentDidMount() {
+    this.getProfile();
+  }
+
+  goToProfile = () => {
+    const { history } = this.props;
+    history.push('/profile');
+  }
+
+  saveUser = async () => {
+    const { image, name, email, description } = this.state;
+    this.setState({ loading: true, successfulFetch: false });
+    await updateUser({
+      name,
+      email,
+      image,
+      description,
+    });
+    this.goToProfile();
+  }
+
+  buttonValidation = () => {
+    const { image, name, email, description } = this.state;
+    if (image !== '' && name !== '' && description !== ''
+    && email.includes('@') && email.includes('.com')) this.setState({ isDisable: false });
+  }
+
+  handleChange = (event) => {
+    const { target: { name, value } } = event;
+    this.setState({ [name]: value }, () => {
+      this.buttonValidation();
+    });
+  }
+
+  getProfile = async () => {
+    const result = await getUser();
+    const { image, name, email, description } = result;
+    this.setState({
+      image,
+      name,
+      email,
+      description,
+      loading: false,
+      successfulFetch: true,
+    }, () => this.buttonValidation());
+  }
+
   render() {
     const { history } = this.props;
+    const { image, name, email, description,
+      isDisable, loading, successfulFetch } = this.state;
     return (
       <div data-testid="page-profile-edit">
         <Header history={ history } />
+        { loading && <Loading /> }
+        {
+          successfulFetch && (
+            <section>
+              <section>
+
+                <section>
+                  <img
+                    src={ image }
+                    alt={ `Foto de ${name}` }
+                  />
+                  <input
+                    type="text"
+                    data-testid="edit-input-image"
+                    name="image"
+                    value={ image }
+                    placeholder="Insira um link"
+                    onChange={ this.handleChange }
+                  />
+                </section>
+
+                <section>
+                  <label
+                    htmlFor="inputName"
+                  >
+                    <p>Nome</p>
+                    <p>Fique à vontade para usar seu nome social</p>
+                    <input
+                      type="text"
+                      data-testid="edit-input-name"
+                      id="inputName"
+                      name="name"
+                      value={ name }
+                      placeholder="Insira seu nome"
+                      onChange={ this.handleChange }
+                    />
+                  </label>
+                </section>
+
+                <section>
+                  <label
+                    htmlFor="inputEmail"
+                  >
+                    <p>E-mail</p>
+                    <p>Escolha um e-mail que consulte diariamente</p>
+                    <input
+                      type="email"
+                      data-testid="edit-input-email"
+                      id="inputEmail"
+                      name="email"
+                      value={ email }
+                      placeholder="Insira um e-mail"
+                      onChange={ this.handleChange }
+                    />
+                  </label>
+                </section>
+
+                <section>
+                  <label
+                    htmlFor="inputDescription"
+                  >
+                    <p>Descrição</p>
+                    <textarea
+                      data-testid="edit-input-description"
+                      id="inputDescription"
+                      name="description"
+                      value={ description }
+                      placeholder="Sobre mim"
+                      onChange={ this.handleChange }
+                    />
+                  </label>
+                </section>
+
+                <section>
+                  <input
+                    type="submit"
+                    data-testid="edit-button-save"
+                    value="Salvar"
+                    disabled={ isDisable }
+                    onClick={ this.saveUser }
+                  />
+                </section>
+
+              </section>
+            </section>
+          )
+        }
       </div>
     );
   }
