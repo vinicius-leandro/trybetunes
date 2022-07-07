@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../../components/Header';
+import Header from '../../components/Header/Header';
 import AlbumList from '../../components/AlbumList';
 import Loading from '../../components/Loading';
 import searchAlbumsAPI from '../../services/searchAlbumsAPI';
