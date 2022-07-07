@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import Loading from '../components/Loading';
-import { getUser } from '../services/userAPI';
-import ProfileCard from '../components/ProfileCard';
+import Header from '../../components/Header';
+import Loading from '../../components/Loading';
+import { getUser } from '../../services/userAPI';
+import ProfileCard from '../../components/ProfileCard';
 
 class Profile extends React.Component {
   constructor() {

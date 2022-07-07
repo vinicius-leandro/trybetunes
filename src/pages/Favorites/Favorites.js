@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import Loading from '../components/Loading';
-import MusicCard from '../components/MusicCard';
-import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import Header from '../../components/Header';
+import Loading from '../../components/Loading';
+import MusicCard from '../../components/MusicCard';
+import { getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
 
 class Favorites extends React.Component {
   constructor() {

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import Loading from '../components/Loading';
-import { getUser, updateUser } from '../services/userAPI';
+import Header from '../../components/Header';
+import Loading from '../../components/Loading';
+import { getUser, updateUser } from '../../services/userAPI';
 
 class ProfileEdit extends React.Component {
   constructor() {
