@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../components/Loading';
 import { createUser } from '../services/userAPI';
+import logo from '../images/LOGO_POSITIVA 1.png';
+import './Login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -50,27 +52,44 @@ class Login extends React.Component {
   render() {
     const { inputName, disabled, loading } = this.state;
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="loginPage">
         {
           loading ? <Loading /> : (
-            <form>
-              <input
-                type="text"
-                data-testid="login-name-input"
-                name="inputName"
-                value={ inputName }
-                placeholder="Nome"
-                onChange={ this.handleChange }
-              />
+            <section>
+              <section className="logoContainer">
+                <img
+                  className="logo"
+                  src={ logo }
+                  alt="Logo da trybetunes"
+                />
+              </section>
+              <section className="formContainer">
+                <form className="formContent">
+                  <section className="inputTextContainer">
+                    <input
+                      className="inputText"
+                      type="text"
+                      data-testid="login-name-input"
+                      name="inputName"
+                      value={ inputName }
+                      placeholder="Nome"
+                      onChange={ this.handleChange }
+                    />
+                  </section>
 
-              <input
-                type="submit"
-                data-testid="login-submit-button"
-                value="Entrar"
-                disabled={ disabled }
-                onClick={ this.handleClickButton }
-              />
-            </form>
+                  <section className="inputButtonContainer">
+                    <input
+                      className="inputButton"
+                      type="submit"
+                      data-testid="login-submit-button"
+                      value="Entrar"
+                      disabled={ disabled }
+                      onClick={ this.handleClickButton }
+                    />
+                  </section>
+                </form>
+              </section>
+            </section>
           )
         }
       </div>

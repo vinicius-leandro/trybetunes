@@ -47,7 +47,7 @@ class Header extends React.Component {
       <header data-testid="header-component">
         {
           loading ? <Loading /> : (
-            <section>
+            <section className="headerContainer">
               <section>
                 <p data-testid="header-user-name">{userName}</p>
               </section>
