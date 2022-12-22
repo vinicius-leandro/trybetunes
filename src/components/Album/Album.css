@@ -1,14 +1,13 @@
 .albumContent {
   align-items: center;
-
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
-.albumContent img {
+/* .albumContent img {
   margin-left: calc(50% - 50px);
-}
+} */
 
 .albumContent p {
   color: #023031;
