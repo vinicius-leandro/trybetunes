@@ -1,0 +1,24 @@
+.albumContent {
+  align-items: center;
+
+  /* display: flex;
+  flex-direction: column; */
+  height: 100%;
+}
+
+.albumContent img {
+  margin-left: calc(50% - 50px);
+}
+
+.albumContent p {
+  color: #023031;
+  margin-left: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.albumContent img, .albumContent p {
+  margin-top: 15px;
+}

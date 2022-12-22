@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Album from '../Album';
+import Album from '../Album/Album';
 import './AlbumList.css';
 
 class AlbumList extends React.Component {
@@ -16,21 +16,27 @@ class AlbumList extends React.Component {
 
     return (
       <section className="albumListContainer">
-        <section>
-          <h2>{`Resultado de álbuns de: ${artist}`}</h2>
-        </section>
-        <section>
-          {
-            data.map((album) => (
-              <Album
-                key={ album.collectionId }
-                link={ album.collectionId }
-                albumImage={ album.artworkUrl100 }
-                collectionName={ album.collectionName }
-                artistName={ album.artistName }
-              />
-            ))
-          }
+        <section className="albumListContent">
+          <section>
+            <h2 className="albumListArtist">{`Resultado de álbuns de: ${artist}`}</h2>
+          </section>
+          <section className="albumContainer">
+            {
+              data.map((album) => (
+                <section
+                  key={ album.collectionId }
+                  className="album"
+                >
+                  <Album
+                    link={ album.collectionId }
+                    albumImage={ album.artworkUrl100 }
+                    collectionName={ album.collectionName }
+                    artistName={ album.artistName }
+                  />
+                </section>
+              ))
+            }
+          </section>
         </section>
       </section>
     );

@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './Album.css';
 
 class Album extends React.Component {
   render() {
     const { albumImage, collectionName, artistName, link } = this.props;
     return (
-      <section>
-        <Link
-          to={ `/album/${link}` }
-          data-testid={ `link-to-album-${link}` }
-        >
+      <Link
+        to={ `/album/${link}` }
+        data-testid={ `link-to-album-${link}` }
+      >
+        <div className="albumContent">
           <img
             src={ albumImage }
             alt="Capa do album"
@@ -18,11 +19,11 @@ class Album extends React.Component {
           <p>
             { collectionName }
           </p>
-          <p>
+          <p className="teste">
             { artistName }
           </p>
-        </Link>
-      </section>
+        </div>
+      </Link>
     );
   }
 }
