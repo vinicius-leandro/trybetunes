@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import AlbumList from '../../components/AlbumList';
 import Loading from '../../components/Loading';
 import searchAlbumsAPI from '../../services/searchAlbumsAPI';
+import './Search.css';
 
 class Search extends React.Component {
   constructor() {
@@ -59,9 +60,10 @@ class Search extends React.Component {
     return (
       <div data-testid="page-search">
         <Header history={ history } />
-        <section>
+        <section className="searchFormContainer">
           <form>
             <input
+              className="searchTextInput"
               type="text"
               data-testid="search-artist-input"
               name="artistName"
@@ -71,6 +73,7 @@ class Search extends React.Component {
             />
 
             <input
+              className="searchButtonInput"
               type="submit"
               data-testid="search-artist-button"
               value="Pesquisar"

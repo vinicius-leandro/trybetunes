@@ -1,0 +1,33 @@
+.searchFormContainer {
+  align-items: center;
+  display: flex;
+  height: 20vh;
+  justify-content: center;
+}
+
+.searchFormContainer form {
+  display: flex;
+  justify-content: space-around;
+  width: 45%;
+}
+
+.searchTextInput {
+  border: 1px solid gray;
+  border-radius: 7px;
+  padding: 10px;
+  width: 70%;
+}
+
+.searchButtonInput {
+  background-color: rgb(162, 162, 255);
+  border: none;
+  color: white;
+  font-size: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.searchButtonInput:enabled {
+  background-color: blue;
+  cursor: pointer;
+}
