@@ -1,0 +1,12 @@
+.albumNotFoundContainer {
+  display: flex;
+  height: 63.5vh;
+  justify-content: center;
+}
+
+.albumNotFoundContainer h1 {
+  color: #023031;
+  font-size: 50px;
+  font-weight: 400;
+  margin: 7%;
+}

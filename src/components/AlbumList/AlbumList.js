@@ -1,14 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Album from './Album';
+import Album from '../Album';
+import './AlbumList.css';
 
 class AlbumList extends React.Component {
   render() {
     const { data, artist } = this.props;
-    if (data.length === 0) return <h1>Nenhum álbum foi encontrado</h1>;
+    if (data.length === 0) {
+      return (
+        <section className="albumNotFoundContainer">
+          <h1>Nenhum álbum foi encontrado</h1>
+        </section>
+      );
+    }
 
     return (
-      <section>
+      <section className="albumListContainer">
         <section>
           <h2>{`Resultado de álbuns de: ${artist}`}</h2>
         </section>
