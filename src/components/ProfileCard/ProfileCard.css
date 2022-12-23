@@ -1,0 +1,71 @@
+.profileContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 83.5vh;
+}
+
+.profileContent {
+  border-radius: 6px;
+  box-shadow: 0 1px 8px 2px rgb(223, 223, 223);
+  height: 70vh;
+  padding: 20px;
+  width: 20vw;
+}
+
+.imageAndEditContainer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.imageContent {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.imageContent img {
+  border-radius: 50%;
+  width: 100px;
+}
+
+.editBtnContent {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.editBtnContent button {
+  background-color: white;
+  border: 1px solid blue;
+  border-radius: 5px;
+  color: blue;
+  cursor: pointer;
+  padding: 7px 20px;
+}
+
+.editBtnContent button:active {
+  background-color: blue;
+  color: white;
+}
+
+.descriptionContainer section {
+  height: 20vh;
+  overflow: scroll;
+}
+
+.nameContainer p, .emailContainer p, .descriptionContainer p {
+  color: rgb(60, 60, 60);
+  font-size: 23px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.nameContainer span, .emailContainer span, .descriptionContainer section {
+  color: rgb(60, 60, 60);
+}
+
+.imageAndEditContainer, .nameContainer, .emailContainer, .descriptionContainer {
+  margin-bottom: 40px;
+}

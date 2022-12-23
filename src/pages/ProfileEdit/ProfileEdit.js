@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../../components/Header/Header';
 import Loading from '../../components/Loading';
 import { getUser, updateUser } from '../../services/userAPI';
+import './ProfileEdit.css';
 
 class ProfileEdit extends React.Component {
   constructor() {
@@ -75,30 +76,34 @@ class ProfileEdit extends React.Component {
         { loading && <Loading /> }
         {
           successfulFetch && (
-            <section>
-              <section>
+            <section className="profileEditContainer">
+              <section className="profileEditContent">
 
-                <section>
-                  <img
-                    src={ image }
-                    alt={ `Foto de ${name}` }
-                  />
-                  <input
-                    type="text"
-                    data-testid="edit-input-image"
-                    name="image"
-                    value={ image }
-                    placeholder="Insira um link"
-                    onChange={ this.handleChange }
-                  />
+                <section className="imageAndInputContainer">
+                  <div className="imageContent">
+                    <img
+                      src={ image }
+                      alt={ `Foto de ${name}` }
+                    />
+                  </div>
+                  <div className="inputImageContent">
+                    <input
+                      type="text"
+                      data-testid="edit-input-image"
+                      name="image"
+                      value={ image }
+                      placeholder="Insira um link"
+                      onChange={ this.handleChange }
+                    />
+                  </div>
                 </section>
 
-                <section>
+                <section className="nameEditContainer">
                   <label
                     htmlFor="inputName"
                   >
                     <p>Nome</p>
-                    <p>Fique à vontade para usar seu nome social</p>
+                    <span>Fique à vontade para usar seu nome social</span>
                     <input
                       type="text"
                       data-testid="edit-input-name"
@@ -111,12 +116,12 @@ class ProfileEdit extends React.Component {
                   </label>
                 </section>
 
-                <section>
+                <section className="emailEditContainer">
                   <label
                     htmlFor="inputEmail"
                   >
                     <p>E-mail</p>
-                    <p>Escolha um e-mail que consulte diariamente</p>
+                    <span>Escolha um e-mail que consulte diariamente</span>
                     <input
                       type="email"
                       data-testid="edit-input-email"
@@ -129,7 +134,7 @@ class ProfileEdit extends React.Component {
                   </label>
                 </section>
 
-                <section>
+                <section className="descriptionEditContainer">
                   <label
                     htmlFor="inputDescription"
                   >
@@ -145,7 +150,7 @@ class ProfileEdit extends React.Component {
                   </label>
                 </section>
 
-                <section>
+                <section className="saveEditBtn">
                   <input
                     type="submit"
                     data-testid="edit-button-save"

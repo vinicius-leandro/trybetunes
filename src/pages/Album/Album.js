@@ -5,6 +5,7 @@ import getMusics from '../../services/musicsAPI';
 import MusicCard from '../../components/MusicCard';
 import Loading from '../../components/Loading';
 import { addSong, getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
+import './Album.css';
 
 class Album extends React.Component {
   constructor() {
@@ -81,13 +82,15 @@ class Album extends React.Component {
         {
           successfulFetch && (
             <section>
-              <section>
-                <img
-                  src={ image }
-                  alt={ albumName }
-                />
-                <h2 data-testid="album-name">{ albumName }</h2>
-                <h3 data-testid="artist-name">{ artistsName }</h3>
+              <section className="albumInfosContainer">
+                <section className="albumInfos">
+                  <img
+                    src={ image }
+                    alt={ albumName }
+                  />
+                  <h2 data-testid="album-name">{ albumName }</h2>
+                  <h3 data-testid="artist-name">{ artistsName }</h3>
+                </section>
               </section>
               {
                 albumData.filter((element) => element.kind === 'song')
