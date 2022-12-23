@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import Header from '../../components/Header/Header';
 import Loading from '../../components/Loading';
 import { getUser } from '../../services/userAPI';
-import ProfileCard from '../../components/ProfileCard';
+import ProfileCard from '../../components/ProfileCard/ProfileCard';
+import '../../components/ProfileCard/ProfileCard.css';
 
 class Profile extends React.Component {
   constructor() {
@@ -34,7 +35,7 @@ class Profile extends React.Component {
       <div data-testid="page-profile">
         <Header history={ history } />
         { loading && <Loading /> }
-        <section>
+        <section className="profileContainer">
           {
             successfulFetch && (
               <ProfileCard
