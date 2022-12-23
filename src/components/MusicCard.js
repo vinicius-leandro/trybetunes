@@ -7,27 +7,36 @@ class MusicCard extends React.Component {
       handleFavorite, checkedValue, musicData } = this.props;
     return (
       <section>
-        <p>{ trackName }</p>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
-          <track kind="captions" />
-          O seu navegador não suporta o elemento
-          {' '}
-          <code>audio</code>
-        </audio>
-        <label
-          htmlFor="favorites"
-        >
-          Favorita
-          <input
-            type="checkbox"
-            data-testid={ `checkbox-music-${trackId}` }
-            id="favorites"
-            name="favorites"
-            checked={ checkedValue }
-            onChange={ () => handleFavorite(musicData, checkedValue) }
+        <section className="favorite">
+          <div className="songName">
+            <p>{ trackName }</p>
+          </div>
+          <div className="audio">
+            <audio data-testid="audio-component" src={ previewUrl } controls>
+              <track kind="captions" />
+              O seu navegador não suporta o elemento
+              {' '}
+              <code>audio</code>
+            </audio>
+          </div>
+          <div className="favoriteBtn">
+            <label
+              htmlFor="favorites"
+            >
+              Favoritar:
+              <input
+                type="checkbox"
+                data-testid={ `checkbox-music-${trackId}` }
+                id="favorites"
+                name="favorites"
+                checked={ checkedValue }
+                onChange={ () => handleFavorite(musicData, checkedValue) }
 
-          />
-        </label>
+              />
+            </label>
+          </div>
+        </section>
+        <hr />
       </section>
     );
   }

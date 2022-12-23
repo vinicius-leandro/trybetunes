@@ -1,0 +1,50 @@
+.favoritesContainer {
+  display: flex;
+  height: 83.5vh;
+  justify-content: center;
+}
+
+.favoritesContent {
+  width: 80%;
+}
+
+.favoritesContent h2 {
+  color: #023031;
+  font-size: 30px;
+  font-weight: 400;
+  margin: 30px 0;
+}
+
+hr {
+  background: lightgray;
+  border: 0;
+  height: 1px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.favorite {
+  align-items: center;
+  display: flex;
+}
+
+.favorite div {
+  display: flex;
+  justify-content: center;
+}
+
+.songName, .favoriteBtn {
+  width: 25%;
+}
+
+.audio {
+  width: 50%;
+}
+
+.audio audio {
+  width: 100%;
+}
+
+.favoriteBtn input {
+  margin-left: 10px;
+}
